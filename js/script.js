@@ -20,18 +20,16 @@ const productos = [
 
 const carrito = [];
 while (true) {
-    let codigo = parseInt(prompt("Ingresa el código del producto o 0 para terminar la compra:\n1 - Sahumerios Champa $250\n2 - Sahumerios Palo Santos $250\n3 - Sahumerios Mirra $250\n4 - Bombas defumadoras Romero $350\n5 - Bombas defumadoras Incienso $350\n6 - Bombas defumadoras Sandalo $350\n7 - Aceite Esencial de Tomillo $800\n8 - Aceite Esencial de Menta $800\n9 - Aceite Esencial 32 Hierbasos $800\n"));
+    let codigo = parseInt(prompt("Ingresa el código del producto o 0 para terminar la compra:\n1 - Sahumerios Champa $250\n2 - Sahumerios Palo Santos $250\n3 - Sahumerios Mirra $250\n4 - Bombas defumadoras Romero $350\n5 - Bombas defumadoras Incienso $350\n6 - Bombas defumadoras Sandalo $350\n7 - Aceite Esencial de Tomillo $800\n8 - Aceite Esencial de Menta $800\n9 - Aceite Esencial 32 Hierbas $800\n"));
     if (codigo === 0) {
         break;
     }
 
-    let productoEncontrado = false;
-    for (const producto of productos) {
-        if (producto.codigo === codigo) {
-            carrito[codigo] = producto;
-            productoEncontrado = true;
-            break;
-        }
+    let productoEncontrado = productos.find(producto => producto.codigo === codigo);
+    if (productoEncontrado) {
+        carrito[codigo] = productoEncontrado;
+    } else {
+        alert("No se ha encontrado ningún producto con el código ingresado");
     }
 
     if (!productoEncontrado) {
